@@ -9,9 +9,9 @@
   },
   "scripts": {
     "icons": "node scripts/fetch-icons.mjs",
-    "icons:force": "node scripts/fetch-icons.mjs --force",
+    "stats": "node scripts/fetch-stats.mjs",
     "build": "node scripts/build-assets.mjs",
     "preview": "node scripts/preview.mjs",
-    "all": "npm run icons && npm run build"
+    "all": "npm run icons && npm run stats && npm run build"
   }
 }

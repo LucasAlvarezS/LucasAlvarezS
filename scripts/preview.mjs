@@ -30,16 +30,17 @@ async function main() {
   const assets = await readdir(join(ROOT, "assets"));
 
   // mismo orden que el README: cabecera y despues cada proyecto
-  const order = ["header", ...cfg.projects.map((p) => "project-" + p.id)];
-  const pick = (lang, mode) =>
-    order.map((b) => `${b}-${lang}-${mode}.svg`).filter((f) => assets.includes(f));
+  const order = ["header", "stats", ...cfg.projects.map((p) => "project-" + p.id)];
+  // una sola variante por idioma; el preview la pone sobre los dos fondos
+  // de GitHub para comprobar que se lee en los dos
+  const pick = (lang) => order.map((b) => `${b}-${lang}.svg`).filter((f) => assets.includes(f));
 
   // el idioma primario primero: es el que ve GitHub en el perfil
   const langs = [cfg.primary, ...Object.keys(cfg.i18n).filter((l) => l !== cfg.primary)];
   const panels = langs
     .flatMap((l) => [
-      panel(l, "dark", "#0D1117", "#A09C97", pick(l, "dark")),
-      panel(l, "light", "#FFFFFF", "#595C62", pick(l, "light")),
+      panel(l, "oscuro", "#0D1117", "#8E8884", pick(l)),
+      panel(l, "claro", "#FFFFFF", "#8E8884", pick(l)),
     ])
     .join("\n");
 

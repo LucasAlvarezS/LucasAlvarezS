@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="173" viewBox="0 0 1000 173" role="img" aria-label="En GitHub: 132 commits, 17 pull requests (16 mergeados), 14 repos públicos.">
+  <text x="2" y="12" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#B86E12" font-weight="500" letter-spacing="1.8">EN GITHUB</text>
+  <text x="998" y="12" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#9A938E" letter-spacing="0.6" text-anchor="end">al 2026-10-04</text>
+  <line x1="2" y1="26" x2="998" y2="26" stroke="#8A8A8A" stroke-width="1" opacity="0.7"/>
+  <text x="2" y="72" font-family="Georgia,'Iowan Old Style','Palatino Linotype','Book Antiqua','Times New Roman',serif" font-size="38" fill="#6A635E" font-weight="700" letter-spacing="-0.5">132</text>
+  <text x="4" y="94" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="11" fill="#8E8884" letter-spacing="0.8">commits</text>
+  <text x="234" y="72" font-family="Georgia,'Iowan Old Style','Palatino Linotype','Book Antiqua','Times New Roman',serif" font-size="38" fill="#6A635E" font-weight="700" letter-spacing="-0.5">17</text>
+  <text x="236" y="94" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="11" fill="#8E8884" letter-spacing="0.8">pull requests</text>
+  <text x="236" y="111" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#9A938E" letter-spacing="0.4">16 mergeados</text>
+  <text x="466" y="72" font-family="Georgia,'Iowan Old Style','Palatino Linotype','Book Antiqua','Times New Roman',serif" font-size="38" fill="#6A635E" font-weight="700" letter-spacing="-0.5">14</text>
+  <text x="468" y="94" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="11" fill="#8E8884" letter-spacing="0.8">repos públicos</text>
+  <text x="700" y="50" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#9A938E" letter-spacing="1.6">LENGUAJES</text>
+  <text x="700" y="72" font-family="ui-sans-serif,'Helvetica Neue',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif" font-size="13" fill="#7E7875">TypeScript</text>
+  <text x="998" y="72" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="12" fill="#9A938E" text-anchor="end">5</text>
+  <text x="700" y="91" font-family="ui-sans-serif,'Helvetica Neue',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif" font-size="13" fill="#7E7875">Python</text>
+  <text x="998" y="91" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="12" fill="#9A938E" text-anchor="end">4</text>
+  <text x="700" y="110" font-family="ui-sans-serif,'Helvetica Neue',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif" font-size="13" fill="#7E7875">JavaScript</text>
+  <text x="998" y="110" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="12" fill="#9A938E" text-anchor="end">2</text>
+  <text x="700" y="129" font-family="ui-sans-serif,'Helvetica Neue',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif" font-size="13" fill="#7E7875">Vue</text>
+  <text x="998" y="129" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="12" fill="#9A938E" text-anchor="end">1</text>
+  <text x="700" y="148" font-family="ui-sans-serif,'Helvetica Neue',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif" font-size="13" fill="#7E7875">Dart</text>
+  <text x="998" y="148" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="12" fill="#9A938E" text-anchor="end">1</text>
+</svg>

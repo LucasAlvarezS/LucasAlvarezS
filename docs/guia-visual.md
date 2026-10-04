@@ -7,39 +7,50 @@ plantilla, porque es exactamente lo que genera cualquier generador de perfiles.
 Acá lo que estructura la página son tres cosas: la tipografía, una línea de 1px
 y el espacio en blanco. Los valores viven en `profile.config.json` → `theme`.
 
+## Un solo juego de archivos, sin variante por tema
+
+Esta es la corrección más importante del diseño, y vino de un bug real.
+
+El perfil usaba `<picture>` con `prefers-color-scheme` para servir una variante
+clara y una oscura. **No funciona en GitHub.** Esa media query la resuelve el
+navegador contra el tema del **sistema operativo**, no contra el tema de la cuenta
+de GitHub. Con el SO en oscuro y GitHub en claro, el navegador elegía la variante
+oscura y la ponía sobre fondo blanco: el nombre quedaba en `#E8E6E3` sobre
+blanco, con contraste **1.25:1**. Ilegible.
+
+La solución no es elegir mejor: es que no haya nada que elegir. Una sola paleta,
+con contraste suficiente sobre blanco **y** sobre `#0D1117`.
+
+| Rol | Color | Sobre blanco | Sobre oscuro | Para qué |
+|---|---|---|---|---|
+| Fuerte | `#6A635E` | 5.90 | 3.21 | nombre, títulos, niveles (texto grande) |
+| Texto | `#7E7875` | 4.35 | 4.35 | descripciones, reglas de operación |
+| Apagado | `#8E8884` | 3.50 | 5.41 | detalle técnico, etiquetas |
+| Tenue | `#9A938E` | 3.03 | 6.25 | metadatos, guías punteadas |
+| Línea | `#8A8A8A` | 3.45 | 5.48 | reglas de 1px |
+| Acento | `#B86E12` | 3.98 | 4.76 | regla del nombre, nodos, etiquetas |
+
+### El techo es 4.28:1
+
+Hay un límite matemático: el color que mejor rinde simultáneamente sobre blanco y
+sobre `#0D1117` llega a **4.28:1**, y está cerca de `#787878`. Cualquier color más
+oscuro gana sobre blanco y pierde sobre oscuro, y al revés.
+
+Por eso `#7E7875` es casi el óptimo y por eso **la jerarquía no puede descansar en
+el contraste**: descansa en tamaño, peso y familia tipográfica. El nombre no se
+impone por ser más oscuro, sino por medir 44px en serif.
+
+Y por eso el acento es `#B86E12` y no el `#EF7F1D` del logotipo de soou: el naranja
+de marca rinde 2.72 sobre blanco. Es el mismo color quemado hasta que entra en el
+rango que sirve en los dos lados.
+
+Beneficio lateral: la mitad de archivos. Diez en `assets/` en vez de veinte.
+
 ## Sin caja
 
 Cada SVG es **transparente**: sin fondo, sin borde, sin esquinas redondeadas. Se
 apoya sobre el fondo real de GitHub, así que el bloque no parece pegado encima de
 la página — parece parte de ella.
-
-Consecuencia práctica: no hay color de fondo ni de superficie en la paleta. Solo
-hay colores de tinta.
-
-| Rol | Oscuro | Claro | Contraste | Para qué |
-|---|---|---|---|---|
-| Texto | `#E8E6E3` | `#1E2125` | 15.2 / 16.2 | nombre, niveles, nombres de proyecto |
-| Apagado | `#A09C97` | `#595C62` | 6.9 / 6.7 | descripciones, pie del diagrama |
-| Tenue | `#74706B` | `#7E8288` | 3.9 / 3.9 | metadatos, guías punteadas, detalle |
-| Línea | `#343029` | `#D7D4CE` | — | las reglas de 1px y el árbol |
-| Acento | `#EF7F1D` | `#C2410C` | 7.0 / 5.2 | regla del nombre, nodos, etiquetas |
-
-### De dónde sale el color
-
-No está inventado: **sale de soou**. El naranja `#EF7F1D` es el de su logotipo,
-medido pixel a pixel sobre el archivo original. Los grises salen de los tokens de
-su interfaz (`--text`, `--text-dim`, `--text-faint`, en oklch), convertidos a sRGB.
-
-Eso resuelve dos problemas a la vez. El perfil deja de usar un acento elegido por
-gusto — que es lo que hace que un color se vea genérico — y pasa a compartir
-identidad con el proyecto que encabeza la página.
-
-El tema claro oscurece el naranja a `#C2410C` porque el de marca rinde 2.7 sobre
-blanco, que no alcanza para texto. Sobre el fondo oscuro de GitHub el de marca
-rinde 7.0 y se usa tal cual.
-
-Los tres niveles de tinta no son decorativos: con bloques transparentes y sin
-cajas, la jerarquía la carga el contraste del texto, no el fondo de un contenedor.
 
 ## Un solo eje de lectura
 

@@ -1,0 +1,30 @@
+{
+  "_nota": "Generado por scripts/fetch-stats.mjs. No editar a mano: correr npm run stats.",
+  "updated": "2026-10-04",
+  "commits": 132,
+  "prs": 17,
+  "merged": 16,
+  "repos": 14,
+  "languages": [
+    {
+      "name": "TypeScript",
+      "count": 5
+    },
+    {
+      "name": "Python",
+      "count": 4
+    },
+    {
+      "name": "JavaScript",
+      "count": 2
+    },
+    {
+      "name": "Vue",
+      "count": 1
+    },
+    {
+      "name": "Dart",
+      "count": 1
+    }
+  ]
+}

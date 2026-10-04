@@ -16,7 +16,9 @@ scripts/build-assets.mjs genera los SVG del README
 scripts/preview.mjs      arma una página local con todos los bloques
 assets/icons/ui/         íconos sin tocar (lucide)
 README.es.md             el mismo perfil en español
-assets/header-*.svg      nombre, rol y ubicación
+stats.json               números de GitHub, los actualiza npm run stats
+assets/header-*.svg      retrato, nombre, rol y ubicación
+assets/stats-*.svg       commits, pull requests, repos y lenguajes
 assets/project-*.svg     un bloque por proyecto; el de soou lleva adentro
                          el diagrama de ruteo y las reglas de operación
 assets/soou-mark-*.png   logotipo de soou recoloreado por tema
@@ -25,9 +27,10 @@ README.md                el perfil
 docs/                    esta documentación y las referencias
 ```
 
-Los SVG se nombran `<bloque>-<idioma>-<tema>.svg`: el texto va **dentro** del SVG,
-así que cada combinación de idioma y tema es un archivo propio. Dos idiomas por dos
-temas por cuatro bloques son dieciséis archivos, más los dos PNG de soou.
+Los SVG se nombran `<bloque>-<idioma>.svg`. **No hay variante por tema**: la paleta
+tiene contraste suficiente sobre blanco y sobre el fondo oscuro de GitHub, así que
+un solo archivo sirve para los dos. El porqué está en `guia-visual.md`, y no es una
+preferencia: `<picture>` con `prefers-color-scheme` dejaba el perfil ilegible.
 
 No hay dependencias de npm: todo corre con Node 18 o superior.
 
@@ -39,6 +42,7 @@ así nadie tiene que adivinar de qué sistema es ese flujo.
 
 ```bash
 npm run icons    # baja los íconos faltantes (usa caché)
+npm run stats    # actualiza stats.json desde la API de GitHub
 npm run build    # regenera los SVG de assets/
 npm run preview  # abre los bloques en ambos temas, al ancho real de GitHub
 ```
@@ -55,6 +59,7 @@ npm run preview  # abre los bloques en ambos temas, al ancho real de GitHub
 | El texto de un proyecto | `i18n.<lang>.projects.<id>` | `npm run build` |
 | El orden de los proyectos | `profile.config.json` → `projects` | `npm run build` |
 | Agregar un tercer idioma | una clave más en `i18n` | `npm run build` |
+| Refrescar los números | — | `npm run stats && npm run build` |
 | Qué proyecto lleva el diagrama | `projects[].flow: true` | `npm run build` |
 | Quién soy, el texto de arriba | `README.md` y `README.es.md` | — |
 | La línea de stack del cierre | `README.md` y `README.es.md` | — |
@@ -101,3 +106,19 @@ links quedan en markdown justo debajo del proyecto al que pertenecen.
   principio del renglón.
 - El alto de cada bloque se calcula desde el contenido, así que agregar una fila
   no requiere tocar ninguna medida.
+
+## Las estadísticas
+
+Los números salen de la API de GitHub y los dibuja este proyecto. **No hay ninguna
+tarjeta de terceros**: esas son imágenes alojadas fuera, y cuando al servicio se le
+acaba la cuota el perfil queda con un hueco. Pasó en este mismo proyecto — el
+servicio del gráfico de actividad devuelve HTTP 402.
+
+La contrapartida es que `stats.json` es una foto: dice de cuándo es, y se refresca
+con `npm run stats`. Si querés que se actualice solo, un GitHub Action programado
+que corra `npm run all` y commitee el resultado es el paso natural; la técnica está
+descrita en `ideas-perfiles-conocidos.md`, punto 4.
+
+Lo que **sí** es nativo y aparece solo debajo del README, sin configurar nada: el
+calendario de contribuciones y el *Activity overview*. Los repos fijados también
+son nativos, pero hay que elegirlos una vez.

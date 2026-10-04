@@ -7,23 +7,7 @@
     "location": "Chile",
     "timezone": "GMT-3"
   },
-  "_nota_paleta": "Derivada de soou: el naranja #EF7F1D sale del logotipo y los grises de los tokens de su interfaz. El tema claro oscurece el naranja a #C2410C porque el de marca no contrasta sobre blanco.",
-  "theme": {
-    "dark": {
-      "text": "#E8E6E3",
-      "muted": "#A09C97",
-      "faint": "#74706B",
-      "rule": "#343029",
-      "accent": "#EF7F1D"
-    },
-    "light": {
-      "text": "#1E2125",
-      "muted": "#595C62",
-      "faint": "#7E8288",
-      "rule": "#D7D4CE",
-      "accent": "#C2410C"
-    }
-  },
+  "_nota_paleta": "Una sola paleta, no una por tema. GitHub elige la variante de <picture> segun el prefers-color-scheme del SISTEMA, no segun el tema de la cuenta: con el SO en oscuro y GitHub en claro servia la variante oscura sobre blanco y el texto quedaba ilegible. Estos valores tienen contraste suficiente sobre blanco Y sobre #0D1117, asi que no hay nada que elegir mal. El techo teorico sirviendo en los dos fondos es 4.28:1; por eso el naranja es mas quemado que el #EF7F1D del logotipo de soou.",
   "_nota_presentacion": "Registro tomado de como se presentan desarrolladores conocidos (mitsuhiko, yyx990803, sindresorhus, tiangolo): rol, despues las cosas por su nombre, despues lo que hacés. Sustantivos concretos, sin adjetivos y sin aforismos.",
   "projects": [
     {
@@ -107,6 +91,15 @@
           "summary": "Clocking in where there is no signal. The record stays on the phone and uploads itself once the connection is back.",
           "detail": "Next.js · Supabase · keeps working offline"
         }
+      },
+      "stats": {
+        "caption": "On GitHub",
+        "commits": "commits",
+        "prs": "pull requests",
+        "merged": "merged",
+        "repos": "public repos",
+        "languages": "languages",
+        "asof": "as of"
       }
     },
     "es": {
@@ -177,11 +170,28 @@
           "summary": "Marcar asistencia donde no llega la señal. El registro queda en el teléfono y sube solo cuando vuelve la conexión.",
           "detail": "Next.js · Supabase · sigue funcionando sin red"
         }
+      },
+      "stats": {
+        "caption": "En GitHub",
+        "commits": "commits",
+        "prs": "pull requests",
+        "merged": "mergeados",
+        "repos": "repos públicos",
+        "languages": "lenguajes",
+        "asof": "al"
       }
     }
   },
   "ui_icons": [
     "map-pin",
     "clock"
-  ]
+  ],
+  "palette": {
+    "strong": "#6A635E",
+    "text": "#7E7875",
+    "muted": "#8E8884",
+    "faint": "#9A938E",
+    "rule": "#8A8A8A",
+    "accent": "#B86E12"
+  }
 }

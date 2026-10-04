@@ -1,7 +1,7 @@
 /**
  * Genera los SVG del README a partir de profile.config.json.
  *
- * Salidas:
+  * Salidas (una sola variante: la paleta sirve en los dos temas de GitHub):
  *   assets/header-<tema>.svg
  *   assets/project-<id>-<tema>.svg   (uno por proyecto)
  *
@@ -128,8 +128,8 @@ const uiIcon = (body, x, y, size, color, strokeWidth = 1.7) =>
 
 /* ---------- cabecera ---------- */
 
-async function buildHeader(cfg, lang, mode) {
-  const t = cfg.theme[mode];
+async function buildHeader(cfg, lang) {
+  const t = cfg.palette;
   const id = cfg.identity;
   const L = cfg.i18n[lang];
   const parts = [];
@@ -146,13 +146,13 @@ async function buildHeader(cfg, lang, mode) {
   parts.push('<image x="' + EDGE + '" y="14" width="' + av.width + '" height="' + AV +
     '" href="' + av.href + '" clip-path="url(#av)"/>');
 
-  parts.push(text(id.name, COLX, 56, { font: "serif", size: 44, weight: 700, fill: t.text, tracking: -0.5 }));
+  parts.push(text(id.name, COLX, 56, { font: "serif", size: 44, weight: 700, fill: t.strong, tracking: -0.5 }));
   parts.push('<rect x="' + (COLX + 1) + '" y="70" width="52" height="3" fill="' + t.accent + '"/>');
-  parts.push(text(L.role, COLX, 102, { size: 17, weight: 600, fill: t.text }));
+  parts.push(text(L.role, COLX, 102, { size: 17, weight: 600, fill: t.strong }));
 
   let y = 126;
   for (const line of wrapText(L.tagline, W - COLX - EDGE - 30, 14)) {
-    parts.push(text(line, COLX, y, { size: 14, fill: t.muted }));
+    parts.push(text(line, COLX, y, { size: 14, fill: t.text }));
     y += 20;
   }
 
@@ -208,7 +208,7 @@ function renderFlow(cfg, lang, t, y0) {
       '" stroke="' + t.rule + '" stroke-width="1.5"/>');
     parts.push('<circle cx="' + NODE + '" cy="' + y + '" r="3.5" fill="' + t.accent +
       '" opacity="' + lvl.weight + '"/>');
-    parts.push(text(lvl.name, LABEL, y + 5, { size: 15.5, weight: 600, fill: t.text }));
+    parts.push(text(lvl.name, LABEL, y + 5, { size: 15.5, weight: 600, fill: t.strong }));
 
     const from = LABEL + textWidth(lvl.name, 15.5) + 16;
     parts.push('<line x1="' + from.toFixed(1) + '" y1="' + y + '" x2="' + (MODEL - 22) + '" y2="' + y +
@@ -216,7 +216,7 @@ function renderFlow(cfg, lang, t, y0) {
       'stroke-linecap="round" opacity="0.75"/>');
     parts.push('<path d="M ' + (MODEL - 16) + " " + (y - 4) + ' l 5 4 l -5 4" fill="none" stroke="' +
       t.faint + '" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>');
-    parts.push(text(lvl.model, MODEL, y + 5, { font: "mono", size: 13, fill: t.text, opacity: 0.9 }));
+    parts.push(text(lvl.model, MODEL, y + 5, { font: "mono", size: 13, fill: t.text }));
 
     if (lvl.note) {
       parts.push('<path d="M ' + (MODEL + 6) + " " + (y + 14) + ' v 10 q 0 5 5 5 h 6" fill="none" stroke="' +
@@ -237,7 +237,7 @@ function renderFlow(cfg, lang, t, y0) {
     parts.push(text(label.toUpperCase(), COL, y + 12, {
       font: "mono", size: 10.5, weight: 500, fill: t.accent, tracking: 1.6,
     }));
-    parts.push(text(value, LABEL_COL, y + 12, { size: 13.5, fill: t.text, opacity: 0.9 }));
+    parts.push(text(value, LABEL_COL, y + 12, { size: 13.5, fill: t.text }));
     if (i < method.length - 1) parts.push(rule(COL, y + 23, W - EDGE, t.rule, 0.55));
     y += 32;
   });
@@ -269,12 +269,10 @@ async function embedPng(file, height) {
   };
 }
 
-const markImage = (name, mode, height) => embedPng(name + "-" + mode + ".png", height);
-
 /* ---------- un proyecto ---------- */
 
-async function buildProject(cfg, lang, mode, index) {
-  const t = cfg.theme[mode];
+async function buildProject(cfg, lang, index) {
+  const t = cfg.palette;
   const spec = cfg.projects[index];
   const pr = { ...spec, ...cfg.i18n[lang].projects[spec.id] };
   const isLast = index === cfg.projects.length - 1;
@@ -287,12 +285,12 @@ async function buildProject(cfg, lang, mode, index) {
 
   if (pr.mark) {
     // El proyecto que tiene marca propia se titula con ella, no con texto.
-    const m = await markImage(pr.mark, mode, 32);
+    const m = await embedPng(pr.mark + ".png", 32);
     parts.push('<image x="' + COL + '" y="' + (y + 1) + '" width="' + m.width +
       '" height="' + m.height + '" href="' + m.href + '"/>');
   } else {
     parts.push(text(pr.name, COL, y + 26, {
-      font: "serif", size: 28, weight: 700, fill: t.text, tracking: -0.3,
+      font: "serif", size: 28, weight: 700, fill: t.strong, tracking: -0.3,
     }));
   }
 
@@ -302,12 +300,12 @@ async function buildProject(cfg, lang, mode, index) {
 
   y += 58;
   for (const line of wrapText(pr.summary, MEASURE, 15)) {
-    parts.push(text(line, COL, y, { size: 15, fill: t.muted }));
+    parts.push(text(line, COL, y, { size: 15, fill: t.text }));
     y += 24;
   }
 
   y += 5;
-  parts.push(text(pr.detail, COL, y, { font: "mono", size: 12.5, fill: t.faint }));
+  parts.push(text(pr.detail, COL, y, { font: "mono", size: 12.5, fill: t.muted }));
   y += 14;
 
   if (pr.flow) {
@@ -333,31 +331,82 @@ async function buildProject(cfg, lang, mode, index) {
 
 /* ---------- main ---------- */
 
+/* ---------- estadisticas ---------- */
+
+/**
+ * Numeros reales de la API de GitHub, dibujados por nosotros.
+ *
+ * No se usa ninguna tarjeta de terceros: esas son imagenes alojadas fuera y
+ * cuando al servicio se le acaba la cuota el perfil queda con un hueco. Los
+ * datos salen de stats.json, que actualiza `npm run stats`.
+ */
+async function buildStats(cfg, lang) {
+  const t = cfg.palette;
+  const L = cfg.i18n[lang].stats;
+  const d = JSON.parse(await readFile(join(ROOT, "stats.json"), "utf8"));
+  const parts = [];
+
+  parts.push(text(L.caption.toUpperCase(), EDGE, 12, {
+    font: "mono", size: 10.5, weight: 500, fill: t.accent, tracking: 1.8,
+  }));
+  parts.push(text(L.asof + " " + d.updated, W - EDGE, 12, {
+    font: "mono", size: 10.5, fill: t.faint, tracking: 0.6, anchor: "end",
+  }));
+  parts.push(rule(EDGE, 26, W - EDGE, t.rule, 0.7));
+
+  const figures = [
+    [String(d.commits), L.commits, null],
+    [String(d.prs), L.prs, d.merged + " " + L.merged],
+    [String(d.repos), L.repos, null],
+  ];
+
+  let x = EDGE;
+  for (const [value, label, note] of figures) {
+    parts.push(text(value, x, 72, { font: "serif", size: 38, weight: 700, fill: t.strong, tracking: -0.5 }));
+    parts.push(text(label, x + 2, 94, { font: "mono", size: 11, fill: t.muted, tracking: 0.8 }));
+    if (note) parts.push(text(note, x + 2, 111, { font: "mono", size: 10.5, fill: t.faint, tracking: 0.4 }));
+    x += 232;
+  }
+
+  // los lenguajes, por cantidad de repos, en la cuarta columna
+  parts.push(text(L.languages.toUpperCase(), x + 2, 50, {
+    font: "mono", size: 10.5, fill: t.faint, tracking: 1.6,
+  }));
+  let ly = 72;
+  for (const l of d.languages.slice(0, 5)) {
+    parts.push(text(l.name, x + 2, ly, { size: 13, fill: t.text }));
+    parts.push(text(String(l.count), W - EDGE, ly, { font: "mono", size: 12, fill: t.faint, anchor: "end" }));
+    ly += 19;
+  }
+
+  const H = Math.max(ly + 6, 128);
+  const label = L.caption + ": " + d.commits + " " + L.commits + ", " + d.prs + " " + L.prs +
+    " (" + d.merged + " " + L.merged + "), " + d.repos + " " + L.repos + ".";
+  return svg(H, label, parts.join("\n  "));
+}
+
 async function main() {
   const cfg = JSON.parse(await readFile(join(ROOT, "profile.config.json"), "utf8"));
   await mkdir(ASSETS, { recursive: true });
 
-  // idioma x tema: el texto esta dentro del SVG, asi que cada combinacion
-  // es un archivo. Los nombres son <bloque>-<idioma>-<tema>.svg.
+  // Un solo juego de archivos por idioma: la paleta sirve en tema claro y
+  // oscuro, asi que no hay variante que GitHub pueda elegir mal.
   let n = 0;
   for (const lang of Object.keys(cfg.i18n)) {
-    for (const mode of ["dark", "light"]) {
-      const suffix = "-" + lang + "-" + mode + ".svg";
-      const outputs = [["header" + suffix, await buildHeader(cfg, lang, mode)]];
-      for (let i = 0; i < cfg.projects.length; i++) {
-        outputs.push([
-          "project-" + cfg.projects[i].id + suffix,
-          await buildProject(cfg, lang, mode, i),
-        ]);
-      }
-      for (const [file, out] of outputs) {
-        await writeFile(join(ASSETS, file), out, "utf8");
-        n++;
-      }
-      console.log("generado  " + lang + " / " + mode + "  (" + outputs.length + " bloques)");
+    const outputs = [
+      ["header-" + lang + ".svg", await buildHeader(cfg, lang)],
+      ["stats-" + lang + ".svg", await buildStats(cfg, lang)],
+    ];
+    for (let i = 0; i < cfg.projects.length; i++) {
+      outputs.push(["project-" + cfg.projects[i].id + "-" + lang + ".svg", await buildProject(cfg, lang, i)]);
     }
+    for (const [file, out] of outputs) {
+      await writeFile(join(ASSETS, file), out, "utf8");
+      n++;
+    }
+    console.log("generado  " + lang + "  (" + outputs.length + " bloques)");
   }
-  console.log("\n" + n + " archivos en assets/");
+  console.log(n + " archivos en assets/");
 }
 
 main();
