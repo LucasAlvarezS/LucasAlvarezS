@@ -1,0 +1,187 @@
+{
+  "_nota_idiomas": "El texto de los bloques vive en i18n. GitHub solo renderiza README.md en el perfil, asi que el idioma primario es el ingles (misma convencion que soou) y el espanol va en README.es.md. Para invertirlo: intercambiar el contenido de los dos archivos.",
+  "primary": "en",
+  "identity": {
+    "username": "LucasAlvarezS",
+    "name": "Lucas Álvarez",
+    "location": "Chile",
+    "timezone": "GMT-3"
+  },
+  "_nota_paleta": "Derivada de soou: el naranja #EF7F1D sale del logotipo y los grises de los tokens de su interfaz. El tema claro oscurece el naranja a #C2410C porque el de marca no contrasta sobre blanco.",
+  "theme": {
+    "dark": {
+      "text": "#E8E6E3",
+      "muted": "#A09C97",
+      "faint": "#74706B",
+      "rule": "#343029",
+      "accent": "#EF7F1D"
+    },
+    "light": {
+      "text": "#1E2125",
+      "muted": "#595C62",
+      "faint": "#7E8288",
+      "rule": "#D7D4CE",
+      "accent": "#C2410C"
+    }
+  },
+  "_nota_presentacion": "Registro tomado de como se presentan desarrolladores conocidos (mitsuhiko, yyx990803, sindresorhus, tiangolo): rol, despues las cosas por su nombre, despues lo que hacés. Sustantivos concretos, sin adjetivos y sin aforismos.",
+  "projects": [
+    {
+      "id": "soou",
+      "flow": true,
+      "mark": "soou-mark"
+    },
+    {
+      "id": "tourguard"
+    },
+    {
+      "id": "asistencia"
+    }
+  ],
+  "i18n": {
+    "en": {
+      "role": "Full-stack developer",
+      "tagline": "Author of soou. I build web and mobile products, Python tooling, and systems that coordinate coding agents.",
+      "pipeline": {
+        "caption": "How soou decides",
+        "entry": "Task",
+        "levels": [
+          {
+            "name": "trivial",
+            "model": "cheap model, no reasoning",
+            "weight": 0.35
+          },
+          {
+            "name": "contextual",
+            "model": "mid-tier model",
+            "weight": 0.55
+          },
+          {
+            "name": "complex",
+            "model": "frontier model",
+            "weight": 0.8
+          },
+          {
+            "name": "ambiguous or risky",
+            "model": "frontier + cross-check",
+            "weight": 1,
+            "note": "a second agent reviews the first one's output in parallel"
+          }
+        ],
+        "footer": "Fifteen command-line agents · eight MCP tools · daily spend cap"
+      },
+      "method": [
+        [
+          "Fallback",
+          "If the chosen agent is unavailable, the task drops to the next one at that level."
+        ],
+        [
+          "Permissions",
+          "Read-only agents are kept out of any task that writes to disk."
+        ],
+        [
+          "Context",
+          "An MCP server hands the agent what it learned in previous sessions."
+        ],
+        [
+          "Cost",
+          "Daily spend cap, configurable per profile: solo, team or organisation."
+        ]
+      ],
+      "projects": {
+        "soou": {
+          "name": "soou",
+          "meta": "private",
+          "summary": "A coding agent starts from zero every session, and the next one never learns what you already knew. soou keeps that context and decides which model each task deserves.",
+          "detail": "Python with zero dependencies · MCP server · 120+ tests in CI"
+        },
+        "tourguard": {
+          "name": "TourGuard",
+          "meta": "COIL 2024 · INACAP × UFSM",
+          "summary": "A mine that takes visitors needs to know who came in, where they are and when they left. Five people from two countries who had never met built it.",
+          "detail": "Team coordination, mobile app and back-end"
+        },
+        "asistencia": {
+          "name": "Asistencia Parque INER",
+          "meta": "in production",
+          "summary": "Clocking in where there is no signal. The record stays on the phone and uploads itself once the connection is back.",
+          "detail": "Next.js · Supabase · keeps working offline"
+        }
+      }
+    },
+    "es": {
+      "role": "Desarrollador full-stack",
+      "tagline": "Autor de soou. Hago producto web y móvil, herramientas en Python y sistemas que coordinan agentes de código.",
+      "pipeline": {
+        "caption": "Cómo decide soou",
+        "entry": "Tarea",
+        "levels": [
+          {
+            "name": "trivial",
+            "model": "modelo barato, sin razonamiento",
+            "weight": 0.35
+          },
+          {
+            "name": "contextual",
+            "model": "modelo intermedio",
+            "weight": 0.55
+          },
+          {
+            "name": "complejo",
+            "model": "modelo de frontera",
+            "weight": 0.8
+          },
+          {
+            "name": "ambiguo o de riesgo",
+            "model": "frontera + verificación cruzada",
+            "weight": 1,
+            "note": "un segundo agente en paralelo revisa el resultado del primero"
+          }
+        ],
+        "footer": "Quince agentes de línea de comandos · ocho herramientas MCP · tope de gasto por día"
+      },
+      "method": [
+        [
+          "Caída",
+          "Si el agente elegido no está disponible, la tarea baja al siguiente del nivel."
+        ],
+        [
+          "Permisos",
+          "Los agentes de solo lectura quedan fuera de las tareas que escriben en disco."
+        ],
+        [
+          "Contexto",
+          "Un servidor MCP le entrega al agente lo aprendido en sesiones previas."
+        ],
+        [
+          "Costo",
+          "Tope de gasto por día, configurable por perfil: individual, equipo u organización."
+        ]
+      ],
+      "projects": {
+        "soou": {
+          "name": "soou",
+          "meta": "privado",
+          "summary": "Un agente de código empieza de cero en cada sesión, y el siguiente nunca se entera de lo que ya sabías. soou guarda ese contexto y decide qué modelo merece cada tarea.",
+          "detail": "Python sin dependencias · servidor MCP · más de 120 tests en CI"
+        },
+        "tourguard": {
+          "name": "TourGuard",
+          "meta": "COIL 2024 · INACAP × UFSM",
+          "summary": "Una mina que recibe visitas necesita saber quién entró, por dónde va y cuándo salió. Lo armamos entre cinco personas de dos países que no se conocían.",
+          "detail": "Coordinación del equipo, app móvil y back-end"
+        },
+        "asistencia": {
+          "name": "Asistencia Parque INER",
+          "meta": "en producción",
+          "summary": "Marcar asistencia donde no llega la señal. El registro queda en el teléfono y sube solo cuando vuelve la conexión.",
+          "detail": "Next.js · Supabase · sigue funcionando sin red"
+        }
+      }
+    }
+  },
+  "ui_icons": [
+    "map-pin",
+    "clock"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "github-profile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Perfil de GitHub de LucasAlvarezS: SVG generados desde un unico archivo de configuracion",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "icons": "node scripts/fetch-icons.mjs",
+    "icons:force": "node scripts/fetch-icons.mjs --force",
+    "build": "node scripts/build-assets.mjs",
+    "preview": "node scripts/preview.mjs",
+    "all": "npm run icons && npm run build"
+  }
+}

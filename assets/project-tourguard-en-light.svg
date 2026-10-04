@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="171" viewBox="0 0 1000 171" role="img" aria-label="TourGuard (COIL 2024 · INACAP × UFSM): A mine that takes visitors needs to know who came in, where they are and when they left. Five people from two countries who had never met built it.">
+  <text x="2" y="32" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="12" fill="#C2410C" font-weight="500">02</text>
+  <text x="54" y="38" font-family="Georgia,'Iowan Old Style','Palatino Linotype','Book Antiqua','Times New Roman',serif" font-size="28" fill="#1E2125" font-weight="700" letter-spacing="-0.3">TourGuard</text>
+  <text x="998" y="31" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#7E8288" letter-spacing="1.6" text-anchor="end">COIL 2024 · INACAP × UFSM</text>
+  <text x="54" y="70" font-family="ui-sans-serif,'Helvetica Neue',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif" font-size="15" fill="#595C62">A mine that takes visitors needs to know who came in, where they are and when they left. Five people</text>
+  <text x="54" y="94" font-family="ui-sans-serif,'Helvetica Neue',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif" font-size="15" fill="#595C62">from two countries who had never met built it.</text>
+  <text x="54" y="123" font-family="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="12.5" fill="#7E8288">Team coordination, mobile app and back-end</text>
+  <line x1="2" y1="159" x2="998" y2="159" stroke="#D7D4CE" stroke-width="1" opacity="0.8"/>
+</svg>
