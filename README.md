@@ -5,6 +5,8 @@
 
 **English** · [Español](README.es.md)
 
+[Email](mailto:lucas.alvarezsoto@gmail.com) · [Repositories](https://github.com/LucasAlvarezS?tab=repositories) · [soou](#projects)
+
 I build products end to end: PostgreSQL schema, API, a Next.js and TypeScript
 interface, and a Flutter app when it has to work in the field with no signal.
 
@@ -48,6 +50,3 @@ Not public yet. If you want the detail, write to me.
 
 Outside the agents: TypeScript, Next.js, Python, PostgreSQL, Flutter and Vue.
 Computer vision with YOLOv8 and YOLOv11.
-
-[lucas.alvarezsoto@gmail.com](mailto:lucas.alvarezsoto@gmail.com) ·
-[repositories](https://github.com/LucasAlvarezS?tab=repositories)

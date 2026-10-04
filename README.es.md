@@ -5,6 +5,8 @@
 
 [English](README.md) · **Español**
 
+[Email](mailto:lucas.alvarezsoto@gmail.com) · [Repositorios](https://github.com/LucasAlvarezS?tab=repositories) · [soou](#proyectos)
+
 Hago producto de punta a punta: esquema en PostgreSQL, API, interfaz en Next.js y
 TypeScript, y app en Flutter cuando tiene que funcionar en terreno sin señal.
 
@@ -48,6 +50,3 @@ Todavía no es público. Si te interesa el detalle, escribime.
 
 Fuera de los agentes: TypeScript, Next.js, Python, PostgreSQL, Flutter y Vue.
 Visión por computador con YOLOv8 y YOLOv11.
-
-[lucas.alvarezsoto@gmail.com](mailto:lucas.alvarezsoto@gmail.com) ·
-[repositorios](https://github.com/LucasAlvarezS?tab=repositories)

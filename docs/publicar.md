@@ -88,3 +88,49 @@ git add -A
 git commit -m "Actualiza <lo que sea>"
 git push
 ```
+
+## 6. Las tarjetas de estadísticas: cómo agregarlas y por qué no están
+
+Si querés el perfil con la fila de tarjetas de stats —como el de
+[arthurspk](https://github.com/arthurspk)— el bloque está listo para pegar debajo
+de la presentación, ya con la paleta del proyecto y fondo transparente para que
+no meta una caja:
+
+```html
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=LucasAlvarezS&show_icons=true&include_all_commits=true&hide_border=true&bg_color=00000000&title_color=EF7F1D&icon_color=EF7F1D&text_color=A09C97">
+  <img src="https://github-readme-stats.vercel.app/api?username=LucasAlvarezS&show_icons=true&include_all_commits=true&hide_border=true&bg_color=00000000&title_color=C2410C&icon_color=C2410C&text_color=595C62" alt="GitHub stats" height="170">
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs?username=LucasAlvarezS&layout=compact&langs_count=6&hide_border=true&bg_color=00000000&title_color=EF7F1D&text_color=A09C97">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=LucasAlvarezS&layout=compact&langs_count=6&hide_border=true&bg_color=00000000&title_color=C2410C&text_color=595C62" alt="Top languages" height="170">
+</picture>
+```
+
+**Esto es lo que mostraría hoy**, medido contra la API el 4 de octubre de 2026:
+
+| Métrica | Tu valor |
+|---|---|
+| Total Stars Earned | 1 |
+| Total Commits | 130 |
+| Total PRs | 16 |
+| Total Issues | 0 |
+| Contributed to | 1 |
+| Rango | C |
+
+Por eso no están puestas. El perfil que te gustó usa esa fila porque sus números
+son 27.700 estrellas y 7.720 contribuciones al año: ahí la tarjeta *es* el
+argumento. Con 1 estrella y rango C, la misma tarjeta argumenta en contra, y
+queda justo arriba de un diagrama que sí muestra trabajo real.
+
+Cuándo sí ponerlas: cuando `soou` sea público y sus 111 commits y sus tests
+cuenten en el total. Ahí la tarjeta pasa a jugar a favor y pegarla toma diez
+segundos.
+
+Mientras tanto hay dos cosas del perfil de referencia que **ya tenés gratis** y no
+dependen del README, porque las dibuja GitHub solo:
+
+- **Los repos fijados** — la grilla de seis tarjetas. Se configura en
+  *Customize your pins*, paso 4 de esta guía.
+- **El calendario de contribuciones y el Activity overview** — aparecen solos
+  debajo del README, sin hacer nada.

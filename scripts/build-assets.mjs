@@ -134,21 +134,39 @@ async function buildHeader(cfg, lang, mode) {
   const L = cfg.i18n[lang];
   const parts = [];
 
-  parts.push(text(id.name, EDGE, 58, { font: "serif", size: 52, weight: 700, fill: t.text, tracking: -0.6 }));
-  parts.push('<rect x="' + (EDGE + 1) + '" y="74" width="52" height="3" fill="' + t.accent + '"/>');
-  parts.push(text(L.role, EDGE, 108, { size: 17, weight: 600, fill: t.text }));
-  parts.push(text(L.tagline, EDGE, 131, { size: 14, fill: t.muted }));
+  // Dos columnas: retrato a la izquierda, identidad a la derecha. Va todo
+  // dentro del mismo SVG y no en una <table> de markdown porque GitHub le
+  // dibuja borde a cada celda, que es justo la caja que este diseno evita.
+  const AV = 148;
+  const COLX = 184;
+
+  const av = await embedPng("avatar.png", AV);
+  parts.push('<clipPath id="av"><rect x="' + EDGE + '" y="14" width="' + av.width +
+    '" height="' + AV + '" rx="5"/></clipPath>');
+  parts.push('<image x="' + EDGE + '" y="14" width="' + av.width + '" height="' + AV +
+    '" href="' + av.href + '" clip-path="url(#av)"/>');
+
+  parts.push(text(id.name, COLX, 56, { font: "serif", size: 44, weight: 700, fill: t.text, tracking: -0.5 }));
+  parts.push('<rect x="' + (COLX + 1) + '" y="70" width="52" height="3" fill="' + t.accent + '"/>');
+  parts.push(text(L.role, COLX, 102, { size: 17, weight: 600, fill: t.text }));
+
+  let y = 126;
+  for (const line of wrapText(L.tagline, W - COLX - EDGE - 30, 14)) {
+    parts.push(text(line, COLX, y, { size: 14, fill: t.muted }));
+    y += 20;
+  }
 
   const locW = textWidth(id.location, 12, { mono: true });
-  const clockX = EDGE + 14 + 7 + locW + 24;
-  parts.push(uiIcon(await uiBody("map-pin"), EDGE, 146, 13, t.faint));
-  parts.push(text(id.location, EDGE + 19, 156, { font: "mono", size: 12, fill: t.faint }));
-  parts.push(uiIcon(await uiBody("clock"), clockX, 146, 13, t.faint));
-  parts.push(text(id.timezone, clockX + 19, 156, { font: "mono", size: 12, fill: t.faint }));
+  const clockX = COLX + 14 + 7 + locW + 24;
+  parts.push(uiIcon(await uiBody("map-pin"), COLX, y - 4, 13, t.faint));
+  parts.push(text(id.location, COLX + 19, y + 6, { font: "mono", size: 12, fill: t.faint }));
+  parts.push(uiIcon(await uiBody("clock"), clockX, y - 4, 13, t.faint));
+  parts.push(text(id.timezone, clockX + 19, y + 6, { font: "mono", size: 12, fill: t.faint }));
 
-  parts.push(rule(EDGE, 182, W - EDGE, t.rule));
+  const bottom = Math.max(14 + AV, y + 12) + 20;
+  parts.push(rule(EDGE, bottom, W - EDGE, t.rule));
 
-  return svg(190, id.name + " - " + L.role, parts.join("\n  "));
+  return svg(bottom + 10, id.name + " - " + L.role, parts.join("\n  "));
 }
 
 /* ---------- el arbol de ruteo ---------- */
@@ -241,8 +259,8 @@ const pngSize = (buf) => ({ w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) });
  * Va incrustado y no referenciado: un SVG dentro de un <img> no carga
  * recursos externos, asi que una ruta relativa no se veria.
  */
-async function markImage(name, mode, height) {
-  const buf = await readFile(join(ASSETS, name + "-" + mode + ".png"));
+async function embedPng(file, height) {
+  const buf = await readFile(join(ASSETS, file));
   const { w, h } = pngSize(buf);
   return {
     href: "data:image/png;base64," + buf.toString("base64"),
@@ -250,6 +268,8 @@ async function markImage(name, mode, height) {
     height,
   };
 }
+
+const markImage = (name, mode, height) => embedPng(name + "-" + mode + ".png", height);
 
 /* ---------- un proyecto ---------- */
 
